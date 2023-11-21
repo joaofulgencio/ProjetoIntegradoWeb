@@ -1,0 +1,107 @@
+/* Estilos para a página principal */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para os cartões de usuário e seções */
+.user-card, .user-cards, .lista-servicos, .lista-kits {
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+}
+
+/* Estilos para os títulos das seções */
+h1, h2 {
+    color: #007BFF;
+}
+
+/* Estilos para os rótulos */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Estilos para o dropdown de seleção de usuário */
+#user-dropdown {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos para os botões */
+button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para as listas */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Estilos para os itens da lista não selecionados */
+li {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Estilos para os itens da lista selecionados */
+li.selected-card {
+    background-color: #007BFF;
+    color: #fff;
+    border: 2px solid #0056b3;
+    position: relative;
+}
+
+#user-service-cards li.selected-card::after {
+    content: "Você utilizará este ticket na sua compra";
+    position: absolute; /* Posicionamento absoluto */
+    right: 0;
+    color: #fff;
+    padding: 4px;
+    font-weight: bold;
+}
+
+/* Estilos para os itens da lista desabilitados */
+li.disabled {
+    background-color: #ff0000;
+    color: #fff;
+    border: 2px solid #ff0000;
+    cursor: none;
+    position: relative;
+}
+
+li.disabled::after {
+    content: "Ticket Já Utilizado";
+    position: absolute; /* Posicionamento absoluto */
+    right: 0;
+    background-color: #ff0000;
+    color: #fff;
+    padding: 4px;
+    font-weight: bold;
+}
+/* Estilos para a seção de cartões de serviço */
+.user-cards, .lista-servicos, .lista-kits {
+    display: none; /* Inicialmente ocultas */
+}

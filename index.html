@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geração e Venda de Serviços</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<section class="user-card">
+    <article>
+        <h1>Selecionar Usuário</h1>
+        <label for="user-dropdown">Escolha um usuário:</label>
+        <select id="user-dropdown">
+        </select>
+    </article>
+</section>
+
+<section class="user-cards" style="display: none;">
+    <h2>Cartões de Serviço do Usuário</h2>
+    <ul id="user-service-cards">
+
+    </ul>
+    <button id="create-card-button">Criar Novo Cartão de Serviço</button>
+</section>
+
+<section class="lista-servicos" style="display: none;">
+    <h2>Lista de serviços disponiveis</h2>
+    <ul id="list-service-cards">
+
+    </ul>
+    <div class="comprar-button-container">
+
+    </div>
+</section>
+
+<section class="lista-kits" style="display: none;">
+    <h2>Lista de kits disponiveis</h2>
+    <ul id="list-kits-cards">
+
+    </ul>
+    <div class="comprar-button-container-kits">
+
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/usuarios.js"></script>
+<script src="js/cartaodeservico.js"></script>
+<script src="js/servicos.js"></script>
+<script src="js/kit.js"></script>
+</body>
+</html>
