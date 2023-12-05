@@ -5,6 +5,12 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+
+<nav>
+    <button id="user-view-button">Usuários</button>
+    <button id="provider-view-button">Prestador de Serviço</button>
+    <button id="manager-view-button">Relatório gerencial</button>
+</nav>
 <section class="user-card">
     <article>
         <h1>Selecionar Usuário</h1>
@@ -13,39 +19,124 @@
         </select>
     </article>
 </section>
+<section class="user-view">
 
-<section class="user-cards" style="display: none;">
-    <h2>Cartões de Serviço do Usuário</h2>
-    <ul id="user-service-cards">
+    <section class="user-cards" style="display: none;">
+        <h2>Cartões de Serviço do Usuário</h2>
+        <ul id="user-service-cards">
 
-    </ul>
-    <button id="create-card-button">Criar Novo Cartão de Serviço</button>
+        </ul>
+        <button id="create-card-button">Criar Novo Cartão de Serviço</button>
+    </section>
+
+    <section class="lista-servicos" style="display: none;">
+        <h2>Lista de serviços disponiveis</h2>
+        <ul id="list-service-cards">
+
+        </ul>
+        <div class="comprar-button-container">
+
+        </div>
+    </section>
+
+    <section class="lista-kits" style="display: none;">
+        <h2>Lista de kits disponiveis</h2>
+        <ul id="list-kits-cards">
+
+        </ul>
+        <div class="comprar-button-container-kits">
+
+        </div>
+    </section>
+
+    <section class="acordeao-servicos" style="display: none;">
+        <h2>Compras do Usuário</h2>
+        <div id="acordeao-container">
+            <!-- Os itens do acordeão serão inseridos aqui dinamicamente -->
+        </div>
+    </section>
+
+    <section class="acordeao-recompensas" style="display: none;">
+        <h2>Recompensas do Usuário</h2>
+        <div id="acordeao-recompensas-container">
+            <!-- Os itens do acordeão serão inseridos aqui dinamicamente -->
+        </div>
+    </section>
 </section>
 
-<section class="lista-servicos" style="display: none;">
-    <h2>Lista de serviços disponiveis</h2>
-    <ul id="list-service-cards">
+<section class="provider-view" style="display: none;">
 
-    </ul>
-    <div class="comprar-button-container">
+    <section class="prestador-servicos-cards" style="display: none;">
+        <h2>Servicos ou kits comprados pelo usuário</h2>
+        <ul id="user-service-cards-bought">
 
-    </div>
+        </ul>
+        <button id="utilizar-servico-button">Utilizar compra</button>
+    </section>
+
+    <section class="user-rewards" style="display: none;">
+        <h2>Recompensas do Usuário</h2>
+        <ul id="user-rewards-list">
+        </ul>
+        <button id="utilizar-recompensa-button">Utilizar recompensa</button>
+    </section>
 </section>
 
-<section class="lista-kits" style="display: none;">
-    <h2>Lista de kits disponiveis</h2>
-    <ul id="list-kits-cards">
+<section class="manager-view" style="display: none;">
 
-    </ul>
-    <div class="comprar-button-container-kits">
+    <section class="vendas-servicos-individuais" style="display: none;">
+        <h2>Vendas de Serviços individuais</h2>
+         <ul id="vendas-servicos-individuais-container">
+            <!-- Os itens do acordeão serão inseridos aqui dinamicamente -->
+        </ul>
+    </section>
 
-    </div>
+    <section class="vendas-kits" style="display: none;">
+        <h2>Vendas de Kits</h2>
+        <ul id="vendas-kits-container">
+            <!-- Os itens do acordeão serão inseridos aqui dinamicamente -->
+        </ul>
+    </section>
+
+    <section class="servicos-utilizados-tipo" style="display: none;">
+        <h2>Serviços utilizados tipo</h2>
+        <ul id="servicos-utilizados-tipo-container">
+            <!-- Os itens do acordeão serão inseridos aqui dinamicamente -->
+        </ul>
+    </section>
+
+    <section class="recompensas-geradas" style="display: none;">
+        <h2>Recompensas geradas</h2>
+        <ul id="recompensas-geradas-container">
+            <!-- Os itens do acordeão serão inseridos aqui dinamicamente -->
+        </ul>
+    </section>
+
+    <section class="servicos-nao-utilizados" style="display: none;">
+        <h2>Serviços não utilizados</h2>
+        <ul id="servicos-nao-utilizados-container">
+            <!-- Os itens do acordeão serão inseridos aqui dinamicamente -->
+        </ul>
+    </section>
+
+    <section class="kits-nao-utilizados" style="display: none;">
+        <h2>Kits não utilizados</h2>
+        <ul id="kits-nao-utilizados-container">
+            <!-- Os itens do acordeão serão inseridos aqui dinamicamente -->
+        </ul>
+    </section>
+
+
+
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="js/usuarios.js"></script>
 <script src="js/cartaodeservico.js"></script>
 <script src="js/servicos.js"></script>
+<script src="js/prestador.js"></script>
 <script src="js/kit.js"></script>
+<script src="js/navegacao.js"></script>
+<script src="js/manager.js"></script>
 </body>
 </html>

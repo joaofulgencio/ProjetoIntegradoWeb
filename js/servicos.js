@@ -28,6 +28,85 @@ const listaServicos = async () => {
     }
 }
 
+const listarTodasAsComprasDoUsuario = async () => {
+    const selectedUserId = sessionStorage.getItem('selectedUserId');
+    const acordeaoContainer = document.getElementById('acordeao-container');
+    acordeaoContainer.innerHTML = '';
+    const response = await axios.get(`http://localhost:3000/compras/${selectedUserId}`);
+
+    if (response.status === 200) {
+        for (const compra of response.data) {
+            const itemAcordeao = document.createElement('button');
+            itemAcordeao.classList.add('acordeao-item');
+            itemAcordeao.textContent = `Compra ${compra.id} - Data Da Compra ${new Date(compra.data_da_compra).toLocaleDateString()}`
+
+            // Adicionando o item do acordeão ao container
+            acordeaoContainer.appendChild(itemAcordeao);
+
+            const responseDetalhes = await axios.get(`http://localhost:3000/compras/${compra.id}/detalhes`);
+            const conteudoAcordeao = document.createElement('div');
+            conteudoAcordeao.classList.add('acordeao-content');
+
+            let detalhesHTML = '';
+            for (const detalhe of responseDetalhes.data) {
+                if(detalhe.id_servico) {
+                detalhesHTML += `<p>ID do Serviço: ${detalhe.id_servico}, Quantidade: ${detalhe.quantidade}, Preço Unitário: ${detalhe.preco_unitario}, Utilizado: ${detalhe.utilizado}</p>`;
+                } else if (detalhe.id_kit) {
+                    detalhesHTML += `<p>ID do Kit: ${detalhe.id_kit}, Quantidade: ${detalhe.quantidade}, Preço Unitário: ${detalhe.preco_unitario}, Utilizado: ${detalhe.utilizado}</p>`;
+                }
+            }
+            conteudoAcordeao.innerHTML = detalhesHTML;
+
+            // Adicionando o conteúdo do acordeão ao container
+            acordeaoContainer.appendChild(conteudoAcordeao);
+
+            itemAcordeao.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const conteudo = this.nextElementSibling;
+                if (conteudo.style.display === 'block') {
+                    conteudo.style.display = 'none';
+                } else {
+                    conteudo.style.display = 'block';
+                }
+            });
+        }
+
+        document.querySelector('.acordeao-servicos').style.display = 'block';
+    }
+}
+
+
+const listarTodasAsRecompensasDoUsuario = async () => {
+    const selectedUserId = sessionStorage.getItem('selectedUserId');
+    const acordeaoContainer = document.getElementById('acordeao-recompensas-container');
+    acordeaoContainer.innerHTML = '';
+    const response = await axios.get(`http://localhost:3000/recompensas/${selectedUserId}`);
+
+    if (response.status === 200) {
+        for (const recompensa of response.data) {
+            const itemAcordeao = document.createElement('button');
+            itemAcordeao.classList.add('acordeao-item');
+            itemAcordeao.textContent = `Recompensa ${recompensa.id} Ativa: ${recompensa.ativa}`
+
+            // Adicionando o item do acordeão ao container
+            acordeaoContainer.appendChild(itemAcordeao);
+
+            itemAcordeao.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const conteudo = this.nextElementSibling;
+                if (conteudo.style.display === 'block') {
+                    conteudo.style.display = 'none';
+                } else {
+                    conteudo.style.display = 'block';
+                }
+            });
+        }
+
+        document.querySelector('.acordeao-recompensas').style.display = 'block';
+    }
+}
+
+
 const handleServicoLiClick = (event) => {
     const servicoId= event.currentTarget.getAttribute('servico-id')
     let selectedServicos = sessionStorage.getItem('selectedServicos');
@@ -98,6 +177,8 @@ const handleCompraButtonServicosClick= async (event) => {
             await listaCartoes()
             await listaServicos()
             await listaKits()
+            await listarTodasAsComprasDoUsuario()
+            await listarTodasAsRecompensasDoUsuario
         } else {
             alert('Erro ao realizar a compra: ' + result.status);
         }
